@@ -14,11 +14,9 @@ except mysql.connector.Error as err:
   else:
     print(err)
 else:
-
-    pasnummer = 12345687
+  
     query = ('SELECT * FROM klantgegevens '
-             'INNER JOIN passen ON klantgegevens.klantNr = passen.klantNr '
-             'WHERE pasNr = '+str(pasnummer))
+             'INNER JOIN passen ON klantgegevens.klantNr = passen.klantNr')
     cursor.execute(query)
 
     result = cursor.fetchall()

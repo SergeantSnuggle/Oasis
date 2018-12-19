@@ -27,7 +27,7 @@
       include "navbar.php";
     ?>
   </header>
-  <?php
+<!--   <?php
     if (empty($_POST)) {
       # code...
     }
@@ -36,7 +36,7 @@
       $errors = 1;
     }
     print_r($_POST["geslacht"]);
-  ?>
+  ?> -->
   <div class="card">
     <h5 class="card-header">Klant toevoegen</h3>
     <div class="card-body">

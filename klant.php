@@ -37,7 +37,7 @@
                                       FROM boekingen
                                       JOIN activiteit ON activiteit.activiteitNr = boekingen.activiteitNr
                                       WHERE boekingen.klantNr = '$klantnr'
-                                      ORDER BY boekingen.datum DESC");
+                                      ORDER BY boekingen.boekingDatum DESC");
       while($row = $klantquery->fetch_array(MYSQLI_ASSOC)){
         $klanten[] = $row;
       }
@@ -105,7 +105,7 @@
                   ?>
                   <tr>
                     <td><?php echo$activiteit["activiteitNm"];?></td>
-                    <td><?php echo$activiteit["datum"]; ?></td>
+                    <td><?php echo$activiteit["boekingDatum"]; ?></td>
                     <td><?php echo"€".$activiteit["kosten"]; ?></td>
                   </tr>
                   <?php

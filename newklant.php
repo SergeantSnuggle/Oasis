@@ -27,20 +27,38 @@
       include "navbar.php";
     ?>
   </header>
-<!--   <?php
-    if (empty($_POST)) {
-      # code...
-    }
-    if(md5($password) !== $row['password']){
-      $error[]= "Gebruikersnaam of wachtwoord klopt niet";
-      $errors = 1;
-    }
-    print_r($_POST["geslacht"]);
-  ?> -->
+    <?php
+      $errors = 0;
+      if (empty($_POST) === false) {
+        $geslacht = $_POST['geslacht'];
+        if(!$geslacht == "Man" || !$geslacht == "Vrouw"){
+          $errors = 1;
+          $error[]= "Geen geldig geslacht";
+        }
+        $geboortedatum = explode("-", $_POST['geboortedatum']);
+        print_r($geboortedatum);
+        $yy = $geboortedatum[0];
+        $mm = $geboortedatum[1];
+        $dd = $geboortedatum[2];
+        $geboortedatum = mktime( 0, 0, 0, $mm, $dd, $yy );
+        $vandaag = strtotime("now"); 
+        print_r($geboortedatum);
+        print_r($vandaag);
+        if ( $geboortedatum > $vandaag ){
+            $errors = 1;
+            $error[] = "Geen geldige geboortedatum";
+        }
+      }
+    ?>
   <div class="card">
     <h5 class="card-header">Klant toevoegen</h3>
     <div class="card-body">
       <form role="form" method="POST">
+        <?php
+          if(empty($_POST) === false && $errors ===1){
+            echo error($error);
+          }
+        ?>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Naam</label>

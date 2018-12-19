@@ -1,0 +1,72 @@
+.bg-flat-color-1 {
+  background: #20a8d8; }
+.ti-money:before {
+	content: "\e68c";
+}
+body{
+	padding-top: 100px;
+	padding-left: 0.30%;
+	padding-right: 0.30%;
+}
+.navbar{
+	border-bottom: 1px solid;
+}
+.stat-widget-one .stat-icon i {
+  font-size: 30px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 100px;
+  padding: 15px;
+  font-weight: 900;
+  display: inline-block; }
+
+.text-success {
+  color: #28a745 !important;
+}
+.border-success {
+  border-color: #28a745 !important;
+
+ }
+.dib {
+    display: inline-block;
+}
+
+.stat-widget-one .stat-icon {
+    vertical-align: top;
+}
+
+.stat-widget-one .stat-icon i {
+    font-size: 30px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 100px;
+    padding: 15px;
+    font-weight: 900;
+    display: inline-block;
+}
+
+.stat-widget-one .stat-content {
+    margin-left: 30px;
+    margin-top: 7px;
+}
+
+.stat-widget-one .stat-text {
+    font-size: 14px;
+    color: #868e96;
+}
+
+.stat-widget-one .stat-digit {
+    font-size: 24px;
+    color: #373757;
+}
+[class^="ti-"], [class*=" ti-"] {
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

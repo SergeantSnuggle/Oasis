@@ -1,2 +1,2 @@
 # Oasis
-Github voor oasis
+Github voor de oasis admin pagina

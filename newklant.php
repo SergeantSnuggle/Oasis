@@ -27,20 +27,53 @@
       include "navbar.php";
     ?>
   </header>
-  <?php
-    if (empty($_POST)) {
-      # code...
-    }
-    if(md5($password) !== $row['password']){
-      $error[]= "Gebruikersnaam of wachtwoord klopt niet";
-      $errors = 1;
-    }
-    print_r($_POST["geslacht"]);
-  ?>
+    <?php
+      $errors = 0;
+      if (empty($_POST) === false) {
+        $geslacht = $_POST['geslacht'];
+        if(!$geslacht == "Man" || !$geslacht == "Vrouw"){
+          $errors = 1;
+          $error[]= "Geen geldig geslacht";
+
+        }
+        if ($_POST['geslacht'] == "Man") {
+          $geslacht = "M";
+        }
+        if ($_POST['geslacht'] == "Vrouw") {
+          $geslacht = "V";
+        }
+        $geboortedatum = explode("-", $_POST['geboortedatum']);
+        $yy = $geboortedatum[0];
+        $mm = $geboortedatum[1];
+        $dd = $geboortedatum[2];
+        $geboortedatum = mktime( 0, 0, 0, $mm, $dd, $yy );
+        $vandaag = strtotime("now"); 
+        if ( $geboortedatum > $vandaag ){
+            $errors = 1;
+            $error[] = "Geen geldige geboortedatum";
+        }
+        print_r($_POST);
+        $klantnaam = $_POST['naam'];
+        $geboortedatum = $_POST['geboortedatum'];
+        $land = $_POST['land'];
+        $invoegen = "INSERT INTO klantgegevens (klantNaam, geboorteDatum, land, geslacht)
+                VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
+        if ($mysqli->query($invoegen) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $invoegen . "<br>" . $mysqli->error;
+        }
+      }
+    ?>
   <div class="card">
     <h5 class="card-header">Klant toevoegen</h3>
     <div class="card-body">
       <form role="form" method="POST">
+        <?php
+          if(empty($_POST) === false && $errors ===1){
+            echo error($error);
+          }
+        ?>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Naam</label>
@@ -90,8 +123,6 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/js/Chart.min.js"></script>
-  <script type="text/javascript" src="assets/js/chart.js"></script>
   <script src="assets/bootstrap-select/dist/bootstrap-select.min.js"></script>
   <script src="assets/js/countrypicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>

@@ -35,7 +35,8 @@
             <h4 class="mb-0">
               <span class="count">
                 <?php
-                  echo loggedOn($mysqli);                ?>
+                  echo loggedOn($mysqli);                
+                ?>
               </span>
             </h4>
             <p class="text-light">Gebruikers online</p>

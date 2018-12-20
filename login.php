@@ -70,10 +70,6 @@
                   if(isset($_SESSION["username"]) && $_SESSION["username"]){
                     header("Location: index.php");
                   }
-                  else{
-                    echo "gkodfnjgnd";
-                  }
-
                 }
               ?>
                 <div class="form-group">

@@ -34,19 +34,34 @@
         if(!$geslacht == "Man" || !$geslacht == "Vrouw"){
           $errors = 1;
           $error[]= "Geen geldig geslacht";
+
+        }
+        if ($_POST['geslacht'] == "Man") {
+          $geslacht = "M";
+        }
+        if ($_POST['geslacht'] == "Vrouw") {
+          $geslacht = "V";
         }
         $geboortedatum = explode("-", $_POST['geboortedatum']);
-        print_r($geboortedatum);
         $yy = $geboortedatum[0];
         $mm = $geboortedatum[1];
         $dd = $geboortedatum[2];
         $geboortedatum = mktime( 0, 0, 0, $mm, $dd, $yy );
         $vandaag = strtotime("now"); 
-        print_r($geboortedatum);
-        print_r($vandaag);
         if ( $geboortedatum > $vandaag ){
             $errors = 1;
             $error[] = "Geen geldige geboortedatum";
+        }
+        print_r($_POST);
+        $klantnaam = $_POST['naam'];
+        $geboortedatum = $_POST['geboortedatum'];
+        $land = $_POST['land'];
+        $invoegen = "INSERT INTO klantgegevens (klantNaam, geboorteDatum, land, geslacht)
+                VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
+        if ($mysqli->query($invoegen) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $invoegen . "<br>" . $mysqli->error;
         }
       }
     ?>

@@ -58,6 +58,8 @@
         $land = $_POST['land'];
         $invoegen = "INSERT INTO klantgegevens (klantNaam, geboorteDatum, land, geslacht)
                 VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
+
+        print_r($invoegen);
         if ($mysqli->query($invoegen) === TRUE) {
             echo "New record created successfully";
         } else {

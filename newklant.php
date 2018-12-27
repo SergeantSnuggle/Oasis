@@ -30,12 +30,7 @@
     <?php
       $errors = 0;
       if (empty($_POST) === false) {
-        $geslacht = $_POST['geslacht'];
-        if(!$geslacht == "V" || !$geslacht == "M"){
-          $errors = 1;
-          $error[]= "Geen geldig geslacht";
 
-        }
         $geboortedatum = explode("-", $_POST['geboortedatum']);
         $yy = $geboortedatum[0];
         $mm = $geboortedatum[1];
@@ -49,16 +44,20 @@
         $klantnaam = $_POST['naam'];
         $geboortedatum = $_POST['geboortedatum'];
         $land = $_POST['land'];
+        $geslacht = $_POST['geslacht'];
+        if(!$geslacht == "V" || !$geslacht == "M"){
+          $errors = 1;
+          $error[]= "Geen geldig geslacht";
+
+        }
         $invoegen = "INSERT INTO klantgegevens (klantNaam, geboorteDatum, land, geslacht)
                     VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
         if ($errors == 0) {
           if ($mysqli->query($invoegen) === TRUE) {
-              echo "New record created successfully";
+              echo "Klant succesvol toegevoegd";
           } else {
               echo "Error: " . $invoegen . "<br>" . $mysqli->error;
           }
-        }else{
-          echo "het werkt niet";
         }
       }
     ?>

@@ -31,16 +31,10 @@
       $errors = 0;
       if (empty($_POST) === false) {
         $geslacht = $_POST['geslacht'];
-        if(!$geslacht == "Man" || !$geslacht == "Vrouw"){
+        if(!$geslacht == "V" || !$geslacht == "M"){
           $errors = 1;
           $error[]= "Geen geldig geslacht";
 
-        }
-        if ($_POST['geslacht'] == "Man") {
-          $geslacht = "M";
-        }
-        if ($_POST['geslacht'] == "Vrouw") {
-          $geslacht = "V";
         }
         $geboortedatum = explode("-", $_POST['geboortedatum']);
         $yy = $geboortedatum[0];
@@ -52,18 +46,19 @@
             $errors = 1;
             $error[] = "Geen geldige geboortedatum";
         }
-        print_r($_POST);
         $klantnaam = $_POST['naam'];
         $geboortedatum = $_POST['geboortedatum'];
         $land = $_POST['land'];
         $invoegen = "INSERT INTO klantgegevens (klantNaam, geboorteDatum, land, geslacht)
-                VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
-
-        print_r($invoegen);
-        if ($mysqli->query($invoegen) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $invoegen . "<br>" . $mysqli->error;
+                    VALUES ('$klantnaam', '$geboortedatum', '$land', '$geslacht')";
+        if ($errors == 0) {
+          if ($mysqli->query($invoegen) === TRUE) {
+              echo "New record created successfully";
+          } else {
+              echo "Error: " . $invoegen . "<br>" . $mysqli->error;
+          }
+        }else{
+          echo "het werkt niet";
         }
       }
     ?>
@@ -98,9 +93,9 @@
           <div class="form-group col-md-6">
           <label for="inputAddress2">Geslacht</label>
           <select id="basic" class="selectpicker form-control" name="geslacht">
-            <option></option>
-            <option>Vrouw</option>
-            <option>Man</option>
+            <option value=""></option>
+            <option value="V">Vrouw</option>
+            <option value="M">Man</option>
           </select>
           </div>
         </div>

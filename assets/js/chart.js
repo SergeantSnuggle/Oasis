@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$.ajax({
-		url: "data.php",
+		url: "inlogData.php",
 		method: "GET",
 		success: function(data) {
 			var login = $("#login-chart");

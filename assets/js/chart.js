@@ -1,18 +1,10 @@
 $(document).ready(function(){
 	$.ajax({
-		url: "data.php",
+		url: "inlogData.php",
 		method: "GET",
 		success: function(data) {
-			function getCol(matrix, col){
-				var column = [];
-				for(var i=0; i<matrix.length; i++){
-					column.push(matrix[i][col]);
-				}
-				return column;
-			}
-
-			var ctx = $("#login-chart");
-			ctx.height = 120;
+			var login = $("#login-chart");
+			login.height = 120;
 			function formatDate(date){
 
 				var dd = date.getDate();
@@ -39,7 +31,7 @@ $(document).ready(function(){
 			}
 			var lastDays = Last7Days();
 
-			var barGraph = new Chart(ctx, {
+			var barGraph = new Chart(login, {
 				type: 'line',
 				data: {
 					labels: [ lastDays[6], lastDays[5], lastDays[4], lastDays[3], lastDays[2], lastDays[1], lastDays[0] ],

@@ -72,25 +72,25 @@
         ?>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputEmail4">Naam</label>
+            <label for="naam">Naam</label>
             <input type="text" class="form-control" id="inputEmail4" name="naam" placeholder="Klant naam" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Geboortedatum (Jaar-Maand-Dag)</label>
+            <label for="geboortedatum">Geboortedatum (Jaar-Maand-Dag)</label>
             <input class="form-control"data-date-format="yyyy-mm-dd" id="datepicker" name="geboortedatum">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputAddress">Land van herkomst</label>
+            <label for="land">Land van herkomst</label>
             <select class="selectpicker countrypicker form-control" name="land" data-default="Netherlands" data-flag="true" ></select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-          <label for="inputAddress2">Geslacht</label>
+          <label for="geslacht">Geslacht</label>
           <select id="basic" class="selectpicker form-control" name="geslacht">
             <option value=""></option>
             <option value="V">Vrouw</option>

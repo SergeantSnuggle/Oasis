@@ -37,6 +37,9 @@
       <li class="nav-item">
         <a class="nav-link" href="pasadd.php">Pas koppelen</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="statistics.php">Statistieken</a>
+      </li>
     </ul>
     <ul class ="navbar-nav">
       <li class="navbar-item">

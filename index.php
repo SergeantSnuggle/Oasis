@@ -95,7 +95,6 @@
                                             FROM klantgegevens 
                                             GROUP BY `land`
                                             ORDER BY `hoeveelheid` DESC");
-
                         while($row = $result->fetch_array(MYSQLI_ASSOC)){
                           $rows[] = $row;
                         }

@@ -35,7 +35,7 @@
         <a class="nav-link" href="newklant.php">Klant toevoegen</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pas koppelen</a>
+        <a class="nav-link" href="pasadd.php">Pas koppelen</a>
       </li>
     </ul>
     <ul class ="navbar-nav">

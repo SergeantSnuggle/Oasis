@@ -10,7 +10,8 @@
     session_destroy();
     header("Location: login.php");
   }
-
+  $url = $_SERVER['REQUEST_URI'];
+  $url = explode("/", $url);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -25,20 +26,33 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-      </li>
+      <?php if($url[2] == "index.php"){?><li class="nav-item active"><?php }else{?>
       <li class="nav-item">
+      <?php } ?>
+        <a class="nav-link" href="index.php">Home</a>
+      </li>
+      <?php if($url[2] == "klant.php"){?><li class="nav-item active"><?php }else{?>
+      <li class="nav-item">
+      <?php } ?>
         <a class="nav-link" href="klant.php">Alle klanten</a>
       </li>
+      <?php if($url[2] == "newklant.php"){?><li class="nav-item active"><?php }else{?>
       <li class="nav-item">
+      <?php } ?>
         <a class="nav-link" href="newklant.php">Klant toevoegen</a>
       </li>
+      <?php if($url[2] == "pasadd.php"){?><li class="nav-item active"><?php }else{?>
       <li class="nav-item">
+      <?php } ?>
         <a class="nav-link" href="pasadd.php">Pas koppelen</a>
       </li>
+      <?php if($url[2] == "statistics.php"){?><li class="nav-item active"><?php }else{?>
       <li class="nav-item">
+      <?php } ?>
         <a class="nav-link" href="statistics.php">Statistieken</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Servo besturen</a>
       </li>
     </ul>
     <ul class ="navbar-nav">

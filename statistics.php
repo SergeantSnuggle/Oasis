@@ -51,7 +51,7 @@
   while ($row = $typeInfoQuery->fetch_array(MYSQLI_ASSOC)) {
     $typeInfo[] = $row;
   }
-  $laatsteBestelQuery = $mysqli->query("SELECT klantgegevens.klantNaam, activiteit.activiteitNm
+  $laatsteBestelQuery = $mysqli->query("SELECT klantgegevens.klantNaam, activiteit.activiteitNm, boekingen.boekingDatum
                                         FROM boekingen
                                         INNER JOIN klantgegevens ON klantgegevens.klantNr = boekingen.klantNr
                                         INNER JOIN activiteit ON activiteit.activiteitNr = boekingen.activiteitNr
@@ -170,6 +170,7 @@
               <tr>
                 <th scope="col">Klantnaam</th>
                 <th scope="col">Activiteit</th>
+                <th scope="col">Datum</th>
               </tr>
             </thead>
             <tbody>
@@ -179,6 +180,7 @@
                 <tr>
                   <td><?php echo$laatsteBestel[$i]['klantNaam']; ?></td>
                   <td><?php echo$laatsteBestel[$i]['activiteitNm']; ?></td>
+                  <td><?php echo$laatsteBestel[$i]['boekingDatum']; ?></td>
                 </tr>
                 <?php
               }
